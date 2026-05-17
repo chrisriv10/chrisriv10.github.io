@@ -4240,17 +4240,17 @@ input, select, textarea {
 
 /* Slide images */
 .intro-slide.slide1 {
-    background-image: url("../../images/2151ReefscapeWCW.jpg");
+    background-image: url("images/2151ReefscapeWCW.jpg");
     animation-delay: 0s;
 }
 
 .intro-slide.slide2 {
-    background-image: url("../../images/2151MW.png");
+    background-image: url("images/2151MW.png");
     animation-delay: 6s;
 }
 
 .intro-slide.slide3 {
-    background-image: url("../../images/2151Pit.jpg");
+    background-image: url("images/2151Pit.jpg");
     animation-delay: 12s;
 }
 
