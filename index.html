@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -48,7 +48,7 @@
       font-size: 16px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      cursor: none;
+      cursor: default;
       overflow-x: hidden;
     }
 
@@ -293,6 +293,13 @@
       display: flex;
       align-items: center;
       gap: 14px;
+    }
+
+    .contact-label {
+      display: flex;
+      justify-content: center;
+      width: fit-content;
+      margin: 0 auto 56px;
     }
 
     .section-label::after {
@@ -659,16 +666,307 @@
       }
     }
 
+    /* Mobile polish + language toggle */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      border: 1px solid rgba(74, 127, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(11, 11, 26, 0.72);
+      box-shadow: 0 0 18px rgba(74, 127, 255, 0.08);
+    }
+
+    .lang-toggle button {
+      min-width: 34px;
+      min-height: 30px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font: 400 0.72rem/1 'DM Sans', sans-serif;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: color .2s, background .2s, box-shadow .2s;
+    }
+
+    .lang-toggle button.active {
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(74, 127, 255, 0.34);
+    }
+
     .promo-line {
-      display: block;
+      flex: 1;
+      display: flex;
+      justify-content: center;
       text-align: center;
+
+      color: rgba(228, 232, 245, 0.72);
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+
+      max-width: 650px;
       margin: 0 auto;
-      width: fit-content;
-      margin-left: 240px;
+
+      transform: translateX(80px);
+      transition: color 0.2s ease;
     }
 
     .promo-line:hover {
       color: #6b9fff;
+      transition: color 0.2s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      body {
+        cursor: default;
+      }
+
+      a,
+      button {
+        cursor: default;
+      }
+
+      #cursor {
+        display: block;
+      }
+    }
+
+    @media (hover: none),
+    (pointer: coarse) {
+      #cursor {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --nav-h: 96px;
+      }
+
+      nav {
+        height: var(--nav-h);
+        align-items: flex-start;
+        padding: 14px 22px 12px;
+        flex-wrap: wrap;
+        row-gap: 10px;
+      }
+
+      .nav-logo {
+        max-width: calc(100% - 90px);
+        line-height: 1.2;
+      }
+
+      .promo-line {
+        order: 3;
+        flex: 1 0 100%;
+        max-width: none;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .nav-actions {
+        margin-left: auto;
+        gap: 16px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .hero {
+        min-height: 100svh;
+        padding-top: calc(var(--nav-h) + 42px);
+        padding-bottom: 64px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.25rem, 15vw, 6rem);
+        letter-spacing: 0;
+      }
+
+      .hero-sub {
+        max-width: 30rem;
+        color: rgba(228, 232, 245, 0.72);
+      }
+
+      .about-text {
+        font-size: clamp(1.05rem, 4.5vw, 1.35rem);
+        line-height: 1.75;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --nav-h: 150px;
+      }
+
+      nav {
+        justify-content: space-between;
+        padding: 12px 16px;
+      }
+
+      .nav-logo {
+        display: block;
+      }
+
+      .nav-actions {
+        order: 2;
+        display: contents;
+      }
+
+      .lang-toggle {
+        order: 2;
+        margin-left: auto;
+      }
+
+      .nav-links {
+        order: 4;
+        flex: 1 0 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 4px;
+        padding-top: 2px;
+      }
+
+      .nav-links a {
+        display: flex;
+        min-height: 34px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: rgba(11, 11, 26, 0.48);
+        font-size: 0.7rem;
+        letter-spacing: 0.02em;
+        overflow-wrap: anywhere;
+      }
+
+      .hero,
+      section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      section {
+        padding-top: 86px;
+        padding-bottom: 86px;
+      }
+
+      .hero-three-wrap {
+        top: 10%;
+        right: -82%;
+        width: min(760px, 150vw);
+        --field-opacity: 0.42;
+      }
+
+      .hero-eyebrow {
+        max-width: 100%;
+        gap: 8px;
+        font-size: 0.68rem;
+        letter-spacing: 0.11em;
+        white-space: normal;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 18vw, 4.8rem);
+        line-height: 1.02;
+      }
+
+      .hero-sub {
+        margin-top: 24px;
+        font-size: 1rem;
+      }
+
+      .hero-cta,
+      .contact-links {
+        width: 100%;
+      }
+
+      .btn {
+        justify-content: center;
+        min-height: 46px;
+        padding: 12px 18px;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-cta .btn,
+      .contact-links .btn {
+        flex: 1 1 100%;
+      }
+
+      .about-inner {
+        gap: 42px;
+      }
+
+      .stats,
+      .skills-list,
+      .extra-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat,
+      .skill-item,
+      .extra-item {
+        padding: 28px 22px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .section-label {
+        margin-bottom: 36px;
+      }
+
+      footer {
+        padding-bottom: 32px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      :root {
+        --nav-h: 160px;
+      }
+
+      .nav-logo {
+        font-size: 0.95rem;
+      }
+
+      .promo-line {
+        font-size: 0.68rem;
+      }
+
+      .lang-toggle button {
+        min-width: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.72rem, 17vw, 4rem);
+      }
+
+      .about h2,
+      .contact h2 {
+        font-size: clamp(2.1rem, 12vw, 3.2rem);
+      }
+
+      .contact-label {
+        width: fit-content;
+        margin: 0 auto 56px;
+      }
     }
   </style>
 </head>
@@ -681,14 +979,20 @@
   <!-- ── Navigation ── -->
   <nav>
     <a href="#" class="nav-logo">Christopher Rivera</a>
-    <a href="#contact" class="nav-logo promo-line">Offering free website designs — let’s build something great
-      together.</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#extra">Extracurriculars</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#contact" class="nav-logo promo-line" data-i18n="promo">Offering free website designs - let's build
+      something great together.</a>
+    <div class="nav-actions">
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="navAbout">About</a></li>
+        <li><a href="#extra" data-i18n="navActivities">Activities</a></li>
+        <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
+        <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </div>
   </nav>
 
   <!-- ── Hero ── -->
@@ -884,7 +1188,7 @@
 
   <!-- ── Contact ── -->
   <section class="contact" id="contact">
-    <div class="section-label" style="display:flex; justify-content:center; width:105%;">Contact Me</div>
+    <div class="section-label contact-label">Contact Me</div>
     <h2 class="reveal">Let's connect<br>and do something <em>great</em>.</h2>
     <p class="reveal">Have an opportunity, idea, or just want to talk? I'm always open to a good conversation.</p>
     <div class="contact-links reveal">
@@ -1045,6 +1349,139 @@
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
+    /* Language toggle */
+    const translations = {
+      en: {
+        promo: "Offering free website designs - let's build something great together.",
+        navAbout: 'About', navActivities: 'Activities', navSkills: 'Skills', navContact: 'Contact',
+        heroEyebrow: 'Programmer - Web Developer',
+        heroTitle: 'Christopher<br><em>Rivera.</em>',
+        heroSub: 'Based in Chicago. Aiming to create influence everywhere.',
+        heroSkills: 'Skills', heroContact: 'Contact me',
+        aboutLabel: 'About me',
+        aboutTitle: 'Ambitious,<br>driven, and<br>always learning.',
+        statSchool: 'Proviso Mathematics & Science Academy', statAwards: 'Awards Won', statLanguages: 'Programming Languages', statYears: 'Years of Programming/Engineering Experience',
+        aboutP1: `I'm <span style="color:var(--text);">Christopher Rivera</span>, a high school student passionate about <span style="color:var(--text);">web development, programming, robotics,</span> and <span style="color:var(--text);">engineering.</span> I love diving into things that challenge me and push me to grow.`,
+        aboutP2: `Whether it's leading a team, competing, or building a project from scratch, I bring full effort to everything I do.`,
+        aboutP3: `Outside of school, you'll find me playing soccer, cooking, or working on personal projects.`,
+        extraLabel: 'Extracurriculars',
+        extra: [
+          ['Robotics', 'FRC Chief Executive Officer / Programming Department Member', 'Leading with the robotics team, supporting strategy, and helping build reliable robot code for competition.'],
+          ['Coding', 'Programming', 'Building projects, learning new languages, and using code to turn ideas into working tools.'],
+          ['Engineering', 'CAD Design', 'Designing and creating 3D models for various engineering projects. (Autodesk Inventor Certified)'],
+          ['Athletics', 'Club Soccer', 'Competing, training consistently, and building discipline and teamwork on and off the field.'],
+          ['Academic', 'National Honor Society', 'Staying committed to scholarship, character, leadership, and service in the school community.'],
+          ['Technical', 'National Technical Honor Society', 'Recognizing technical growth, career-focused learning, and a commitment to high standards.'],
+          ['Service', 'Key Club', 'Working with others on service projects and finding practical ways to support the community.'],
+          ['Community', 'Community Service', 'Giving time to local efforts, helping where needed, and learning through real-world service.']
+        ],
+        skillsLabel: 'My Skills',
+        skills: [
+          ['Java', 'Writing structured, object-oriented programs for robotics and personal projects.'],
+          ['JavaScript', 'Creating interactive website features and adding behavior to front-end projects.'],
+          ['HTML & CSS', 'Building clean page structure, responsive layouts, and polished visual styles.'],
+          ['Python', 'Solving problems, automating tasks, and writing robot control scripts.'],
+          ['C++', 'Understanding lower-level programming concepts and building efficient logic.'],
+          ['Web Design', 'Designing pages that feel organized, readable, and visually engaging.'],
+          ['Leadership', 'Taking initiative, guiding teammates, and helping groups stay focused on a shared goal.'],
+          ['Teamwork', 'Collaborating well, listening to feedback, and contributing wherever the team needs help.'],
+          ['Problem Solving', 'Breaking problems down, debugging carefully, and staying patient when the answer takes work.']
+        ],
+        contactLabel: 'Contact Me', contactTitle: `Let's connect<br>and do something <em>great</em>.`, contactText: `Have an opportunity, idea, or just want to talk? I'm always open to a good conversation.`,
+        backTop: 'Back to top'
+      },
+      es: {
+        promo: 'Diseno sitios web gratis - construyamos algo excelente juntos.',
+        navAbout: 'Sobre mi', navActivities: 'Actividades', navSkills: 'Habilidades', navContact: 'Contacto',
+        heroEyebrow: 'Programador - Desarrollador web',
+        heroTitle: 'Christopher<br><em>Rivera.</em>',
+        heroSub: 'Basado en Chicago. Buscando crear influencia en todas partes.',
+        heroSkills: 'Habilidades', heroContact: 'Contactame',
+        aboutLabel: 'Sobre mi',
+        aboutTitle: 'Ambicioso,<br>dedicado, y<br>siempre aprendiendo.',
+        statSchool: 'Proviso Mathematics & Science Academy', statAwards: 'Premios ganados', statLanguages: 'Lenguajes de programacion', statYears: 'Anos de experiencia en programacion/ingenieria',
+        aboutP1: `Soy <span style="color:var(--text);">Christopher Rivera</span>, un estudiante de high school apasionado por el <span style="color:var(--text);">desarrollo web, la programacion, la robotica</span> y la <span style="color:var(--text);">ingenieria.</span> Me encanta explorar cosas que me retan y me ayudan a crecer.`,
+        aboutP2: `Ya sea liderando un equipo, compitiendo o creando un proyecto desde cero, doy mi maximo esfuerzo en todo lo que hago.`,
+        aboutP3: `Fuera de la escuela, me puedes encontrar jugando futbol, cocinando o trabajando en proyectos personales.`,
+        extraLabel: 'Actividades',
+        extra: [
+          ['Robotica', 'Director ejecutivo de FRC / Miembro del departamento de programacion', 'Lidero con el equipo de robotica, apoyo la estrategia y ayudo a crear codigo confiable para competencias.'],
+          ['Programacion', 'Programacion', 'Creo proyectos, aprendo nuevos lenguajes y uso codigo para convertir ideas en herramientas reales.'],
+          ['Ingenieria', 'Diseno CAD', 'Diseno y creo modelos 3D para varios proyectos de ingenieria. (Certificado en Autodesk Inventor)'],
+          ['Atletismo', 'Futbol de club', 'Compito, entreno con constancia y desarrollo disciplina y trabajo en equipo dentro y fuera de la cancha.'],
+          ['Academico', 'National Honor Society', 'Mantengo compromiso con el estudio, el caracter, el liderazgo y el servicio en la comunidad escolar.'],
+          ['Tecnico', 'National Technical Honor Society', 'Reconocimiento al crecimiento tecnico, aprendizaje profesional y compromiso con altos estandares.'],
+          ['Servicio', 'Key Club', 'Trabajo con otros en proyectos de servicio y busco maneras practicas de apoyar a la comunidad.'],
+          ['Comunidad', 'Servicio comunitario', 'Dedico tiempo a esfuerzos locales, ayudo donde se necesita y aprendo mediante servicio real.']
+        ],
+        skillsLabel: 'Mis Habilidades',
+        skills: [
+          ['Java', 'Escribo programas estructurados y orientados a objetos para robotica y proyectos personales.'],
+          ['JavaScript', 'Creo funciones interactivas para sitios web y agrego comportamiento a proyectos front-end.'],
+          ['HTML y CSS', 'Construyo estructura clara, disenos responsivos y estilos visuales pulidos.'],
+          ['Python', 'Resuelvo problemas, automatizo tareas y escribo scripts de control para robots.'],
+          ['C++', 'Comprendo conceptos de programacion de bajo nivel y creo logica eficiente.'],
+          ['Diseno web', 'Diseno paginas organizadas, legibles y visualmente atractivas.'],
+          ['Liderazgo', 'Tomo iniciativa, guio companeros y ayudo a que los grupos se enfoquen en una meta comun.'],
+          ['Trabajo en equipo', 'Colaboro bien, escucho comentarios y contribuyo donde el equipo necesita ayuda.'],
+          ['Resolucion de problemas', 'Divido los problemas, depuro con cuidado y mantengo paciencia cuando la respuesta requiere trabajo.']
+        ],
+        contactLabel: 'Contactame', contactTitle: `Conectemos<br>y hagamos algo <em>excelente</em>.`, contactText: `Tienes una oportunidad, una idea o solo quieres hablar? Siempre estoy abierto a una buena conversacion.`,
+        backTop: 'Volver arriba'
+      }
+    };
+
+    const setText = (selector, value) => { const el = document.querySelector(selector); if (el) el.textContent = value; };
+    const setHTML = (selector, value) => { const el = document.querySelector(selector); if (el) el.innerHTML = value; };
+
+    function applyLanguage(lang) {
+      const tLang = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-toggle button').forEach(btn => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      Object.entries({ promo: '[data-i18n="promo"]', navAbout: '[data-i18n="navAbout"]', navActivities: '[data-i18n="navActivities"]', navSkills: '[data-i18n="navSkills"]', navContact: '[data-i18n="navContact"]' })
+        .forEach(([key, selector]) => setText(selector, tLang[key]));
+      setText('.hero-eyebrow', tLang.heroEyebrow);
+      setHTML('.hero h1', tLang.heroTitle);
+      setText('.hero-sub', tLang.heroSub);
+      setText('.hero-cta .btn-primary', tLang.heroSkills);
+      setText('.hero-cta .btn-ghost', tLang.heroContact);
+      setText('#about .section-label', tLang.aboutLabel);
+      setHTML('.about h2', tLang.aboutTitle);
+      ['statSchool', 'statAwards', 'statLanguages', 'statYears'].forEach((key, i) => setText(`.stat:nth-child(${i + 1}) .stat-label`, tLang[key]));
+      [tLang.aboutP1, tLang.aboutP2, tLang.aboutP3].forEach((html, i) => setHTML(`.about-text p:nth-child(${i + 1})`, html));
+      setText('#extra .section-label', tLang.extraLabel);
+      document.querySelectorAll('.extra-item').forEach((item, i) => {
+        const values = tLang.extra[i];
+        if (!values) return;
+        item.querySelector('.extra-tag').textContent = values[0];
+        item.querySelector('.extra-title').textContent = values[1];
+        item.querySelector('.extra-desc').textContent = values[2];
+      });
+      setText('#skills .section-label', tLang.skillsLabel);
+      document.querySelectorAll('.skill-item').forEach((item, i) => {
+        const values = tLang.skills[i];
+        if (!values) return;
+        item.querySelector('.skill-name').textContent = values[0];
+        item.querySelector('.skill-desc').textContent = values[1];
+      });
+      setText('#contact .section-label', tLang.contactLabel);
+      setHTML('.contact h2', tLang.contactTitle);
+      setText('.contact p', tLang.contactText);
+      setText('footer a', tLang.backTop);
+      try { localStorage.setItem('preferredLanguage', lang); } catch (e) { }
+    }
+
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    });
+    applyLanguage(localStorage.getItem('preferredLanguage') || 'en');
+
+
 
     /* ── Scroll reveal ── */
     const observer = new IntersectionObserver(entries => {
