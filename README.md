@@ -1,7 +1,5 @@
-# Christopher Rivera — Personal Portfolio
-
-My personal portfolio website.
-
+# Christopher Rivera — Personal Website
+---
 ## Features
 
 - **Animated space background** — Star field with nebulae and shooting stars 
